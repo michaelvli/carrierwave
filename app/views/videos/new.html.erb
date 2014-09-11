@@ -1,0 +1,73 @@
+<% if !@video.errors.empty? %>
+  <div class="alert alert-error">
+    <ul>
+      <% @video.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+
+<div class="well">
+  <!-- Need to set multipart to true if doing a file upload -->
+  <%= form_for @video, html: { multipart: true } do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :attachment %>
+    <%= f.file_field :attachment %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+
+
+<% if false %>
+UPLOADIFY CODE BELOW: Commenting out because it is flash based and doesn't work on iphone
+<div id="file_upload"></div>
+
+<!-- 
+Uploadify resources:
+1.  Rails 3 - http://martinjhawkins.wordpress.com/2013/10/07/uploadify-with-paperclip-on-rails-tutorial/	
+2.  Rails 4 - http://vignesh.info/blog/rails-4-uploadify-paperclip/ 
+3.  Rails 3 - http://www.damiangalarza.com/posts/ruby-on-rails/using-uploadify-with-rails-3/
+4.  Rails 3 - http://www.nickdesteffen.com/blog/video-encoding-with-uploadify-carrierwave-and-zencoder
+5.  Rails 3 - http://erniemiller.org/2010/07/09/uploadify-and-rails-3/
+-->
+
+
+<script type="text/javascript">
+  $(function() {
+    <% session_key = Rails.application.config.session_options[:key] %>
+    var uploadify_script_data = {};
+    var csrf_token = $('meta[name=csrf-token]').attr('content');
+    var csrf_param = $('meta[name=csrf-param]').attr('content');
+
+/*
+	Note: 
+	- Code for uploadify_script_data variable is different than that shown in : http://www.nickdesteffen.com/blog/video-encoding-with-uploadify-carrierwave-and-zencoder
+	- It was: 
+	
+		uploadify_script_data[csrf_param] = encodeURI(encodeURIComponent(csrf_token)); 
+		
+	But encodeURIComponent was causing an Invalid Authorization Token error.  Code below is consistent with the other two sources cited above.	
+*/
+
+    uploadify_script_data[csrf_param] = encodeURI(csrf_token);
+    uploadify_script_data['<%= session_key %>'] = '<%= cookies[session_key] %>';
+	
+    $('#file_upload').uploadify({
+      'swf'  		: '<%= asset_path("uploadify.swf") %>',
+      'uploader'  	: '<%= videos_path %>',
+	  'formData' 	: uploadify_script_data,
+	  'fileObjName'	: 'attachment',
+      'buttonText' 	: 'Upload Video',
+	  'method'		: 'post',
+	  'removeCompleted' : true,
+	  'multi'		: false,
+      'auto'      	: true
+    });
+  });
+</script>
+<% end %>

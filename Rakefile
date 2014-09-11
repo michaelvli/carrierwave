@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-CarrierWaveExample::Application.load_tasks
+CarrierWave::Application.load_tasks

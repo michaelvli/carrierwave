@@ -20,9 +20,13 @@ gem 'sass-rails', '~> 4.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-gem 'carrierwave'
+gem 'carrierwave-aws'
+#gem 'carrierwave' # using carrierwave-aws instead
+#gem 'fog' # using carrierwave-aws instead
+gem 'zencoder'
+gem 'jquery-fileupload-rails'
+
 gem 'bootstrap-sass', '~> 2.3.2'
-gem 'fog' # required in order to support Amazon S3
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'

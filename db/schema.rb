@@ -13,9 +13,10 @@
 
 ActiveRecord::Schema.define(version: 20130715224711) do
 
-  create_table "resumes", force: true do |t|
+  create_table "videos", force: true do |t|
     t.string   "name"
     t.string   "attachment"
+    t.text     "meta_info"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

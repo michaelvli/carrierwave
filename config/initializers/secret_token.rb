@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-CarrierWaveExample::Application.config.secret_key_base = 'fe1b7aa5e06a51de776abbfc2bef09ac47744bb1148d06740342cdb3eb20146013b0eacee284c81df5825764bca0301090416d59bb64c924f9de90bd4e9b2eaa'
+CarrierWave::Application.config.secret_key_base = ENV["SECRET_TOKEN"] # For dev and test environments - look in config/application.yml
