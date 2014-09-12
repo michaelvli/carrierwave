@@ -42,5 +42,5 @@ class Video < ActiveRecord::Base
 	#DEBUG: Rails.logger.debug("PATH: #{path_to_be_deleted}")
     FileUtils.remove_dir(path_to_be_deleted, :force => true)
   end
-
+  
 end

@@ -35,7 +35,19 @@ class VideosController < ApplicationController
 
   def destroy
     @video = Video.find(params[:id])
-    @video.destroy
+
+#	http://stackoverflow.com/questions/10054985/how-to-delete-files-recursively-from-an-s3-bucket
+#	To delete the entire S3 folder, the aws request but be in the following form:
+#	s3.buckets[ENV['AWS_BUCKET']].objects.with_prefix('uploads/video/attachment/89/').delete_all	
+	directory_to_be_deleted = File.dirname(@video.attachment.url) # get the directory of a file (e.g. - https://s3.amazonaws.com/barfly_carrierwave/uploads/video/attachment/89)
+	bucket = ENV['AWS_BUCKET'] + '/' # need to remove the slash from the url so concatenate with bucket
+	directory_to_be_deleted = directory_to_be_deleted.split(bucket)[1] # splits into an array where we keep the 2nd element (e.g. - uploads/video/attachment/89)
+	directory_to_be_deleted = directory_to_be_deleted + '/' # need to append a forward slash at the end (e.g. - uploads/video/attachment/89/
+#	logger.debug("directory_to_be_deleted: #{directory_to_be_deleted}")
+	s3 = AWS::S3.new(:access_key_id => ENV['AWS_KEY_ID'], :secret_access_key => ENV['AWS_KEY_VALUE'])
+	s3.buckets[ENV['AWS_BUCKET']].objects.with_prefix(directory_to_be_deleted).delete_all # deletes all contents on S3 folder under the video ID
+
+    @video.destroy # destroy the record in the db
     redirect_to videos_path, notice:  "The video #{@video.name} has been deleted."
   end
 
