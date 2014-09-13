@@ -19,11 +19,11 @@ end
 #CarrierWave.configure do |config|
 #  config.fog_credentials = {
 #    :provider               => 'AWS',  # required
-#    :aws_access_key_id      => 'AKIAIS62QDJNWXZTC6JA',  # required
-#    :aws_secret_access_key  => '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',  # required
+#    :aws_access_key_id      => ENV["AWS_KEY_ID"],  # required
+#    :aws_secret_access_key  => ENV["AWS_KEY_VALUE"],  # required
 #    :region                 => 'us-east-1'  # optional, defaults to 'us-east-1'
 #  }
-#  config.fog_directory  = 'barfly_carrierwave'  # required
+#  config.fog_directory  = ENV["AWS_BUCKET"]  # required
 #  config.fog_public     = false  # optional, defaults to true
 #  config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}  # optional, defaults to {}
 #end

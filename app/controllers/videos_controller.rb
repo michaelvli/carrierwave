@@ -70,8 +70,8 @@ class VideosController < ApplicationController
 	#  	Instead, uploadify produces the following params hash:
 	#  		{
 	#			"Filename"=>"old_town_pub.mp4", 
-	#			"authenticity_token"=>"dT24LFJbofwh6QoTiYbmCTDqFgnNnku81sPLN7G9BKk=", 
-	#			"_CarrierWave_session"=>"dXhVaGpxQU1VVjYvTnZDR3JEdGlKb0FRNnZIem9MWlNndWFTaXpITzV3eDlBV2J4WnUxY1c2aVZzZWdRTVRMcHpXVFJNRUFTTzMxcHpsWldGUFVXd0RPNU9WRjllQlQwN0tWL0E4SkJNVERXWW9BcHh4YllDT05PVHg2M1ZFc01PQ1pSejE1K25JZ3VmU0VQdkxtU3JyL29DZmdZZjVHdmlhUkVOUFpsdXd3dzJIaElwSHROYmJucks2T1hYbGx0LS0xSXdmMXNtbzNhL2swVFQ1RUtsZEpBPT0=--63cdf1610ea474ceb63e35d8da43cee03a77bffb", 
+	#			"authenticity_token"=>"dT2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX9BKk=", 
+	#			"_CarrierWave_session"=>"dXhXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx03a77bffb", 
 	#			"Filedata"=>#<ActionDispatch::Http::UploadedFile:0x2ccf8e0 @tempfile=#<File:C:/Users/MICHAE~1/AppData/Local/Temp/RackMultipart20140904-2140-15cy0hb>, @original_filename="old_town_pub.mp4", @content_type="application/octet-stream", @headers="Content-Disposition: form-data; name=\"Filedata\"; filename=\"old_town_pub.mp4\"\r\nContent-Type: application/octet-stream\r\n">, 
 	#			"Upload"=>"Submit Query"
 	#		}
